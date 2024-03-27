@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { Redis } from 'ioredis';
 
-import { Config, RedisConfig } from '../../configs/config.type';
 import { RedisService } from './redis.service';
+import { Config, RedisConfig } from '../../common/types/config.types';
+import { Redis } from 'ioredis';
+import { log } from 'console';
 
 const redisProvider = {
   provide: 'REDIS_PROVIDER',

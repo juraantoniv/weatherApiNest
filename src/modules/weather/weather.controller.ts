@@ -8,15 +8,16 @@ import {
   Delete,
 } from '@nestjs/common';
 import { WeatherService } from './weather.service';
-import { CreateWeatherDto } from './dto/create-weather.dto';
+import { Get_CityWeatherDto } from './dto/get_city-weather.dto';
 import { UpdateWeatherDto } from './dto/update-weather.dto';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('Weather')
 @Controller('weather')
 export class WeatherController {
   constructor(private readonly weatherService: WeatherService) {}
 
   @Post()
-  create(@Body() createWeatherDto: CreateWeatherDto) {
+  async create (@Body() createWeatherDto: Get_CityWeatherDto) {
     return this.weatherService.create(createWeatherDto);
   }
 
@@ -25,9 +26,9 @@ export class WeatherController {
     return this.weatherService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.weatherService.findOne(+id);
+  @Get("city")
+ async findOne(@Body() city:Get_CityWeatherDto) {
+    return await this.weatherService.findOne(city);
   }
 
   @Patch(':id')

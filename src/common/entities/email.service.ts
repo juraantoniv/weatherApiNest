@@ -14,7 +14,6 @@ export class EmailService {
     context: Record<string, string | number> = {},
   ): Promise<void> {
     const { subject, templateName } = templates[emailAction];
-
     const mailOptions = {
       to: email,
       subject,

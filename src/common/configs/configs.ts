@@ -1,11 +1,11 @@
 import * as process from 'process';
-
-import { Config } from './config.type';
+import { Config } from '../types/config.types';
 
 export default (): Config => ({
   app: {
     port: parseInt(process.env.APP_PORT) || 3005,
     host: process.env.APP_HOST || '0.0.0.0',
+    keyApi:process.env.APP_FORECAST_KEY
   },
   postgres: {
     host: process.env.POSTGRES_HOST,
@@ -34,18 +34,18 @@ export default (): Config => ({
     asw_key: process.env.AWS_ACCESS_KEY,
     aws_secret_key: process.env.AWS_SECRET_KEY,
   },
-  token: {
-    auth_access_token_secret: process.env.AUTH_ACCESS_TOKEN_SECRET,
-    auth_access_token_expiration: parseInt(
-      process.env.AUTH_ACCESS_TOKEN_EXPIRATION,
-    ),
-    auth_refresh_token_secret: process.env.AUTH_REFRESH_TOKEN_SECRET,
-    auth_refresh_token_expiration: parseInt(
-      process.env.AUTH_REFRESH_TOKEN_EXPIRATION,
-    ),
-    recovery_password_secret: process.env.AUTH_REFRESH_RECOVERY_TOKEN_SECRET,
-    recovery_password_expiration: parseInt(
-      process.env.RECOVERY_PASSWORD_EXPIRATION,
-    ),
-  },
+  // token: {
+  //   auth_access_token_secret: process.env.AUTH_ACCESS_TOKEN_SECRET,
+  //   auth_access_token_expiration: parseInt(
+  //     process.env.AUTH_ACCESS_TOKEN_EXPIRATION,
+  //   ),
+  //   auth_refresh_token_secret: process.env.AUTH_REFRESH_TOKEN_SECRET,
+  //   auth_refresh_token_expiration: parseInt(
+  //     process.env.AUTH_REFRESH_TOKEN_EXPIRATION,
+  //   ),
+  //   recovery_password_secret: process.env.AUTH_REFRESH_RECOVERY_TOKEN_SECRET,
+  //   recovery_password_expiration: parseInt(
+  //     process.env.RECOVERY_PASSWORD_EXPIRATION,
+  //   ),
+  // },
 });

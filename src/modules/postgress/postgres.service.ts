@@ -7,7 +7,9 @@ import {
   TypeOrmOptionsFactory,
 } from '@nestjs/typeorm/dist/interfaces/typeorm-options.interface';
 
-import { Config, PostgresConfig } from '../../configs/config.type';
+import { Config, PostgresConfig } from '../../common/types/config.types';
+
+
 
 @Injectable()
 export class PostgresService implements TypeOrmOptionsFactory {
